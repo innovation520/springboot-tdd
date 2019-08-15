@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tech.sohocoder.dao.MessageDao">
+
+    <resultMap id="BaseResultMap" type="tech.sohocoder.entity.MessageEntity">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="message" jdbcType="VARCHAR" property="message"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="tech.sohocoder.entity.MessageEntity">
+        insert into message (id, message)
+        values(
+            #{id, jdbcType=BIGINT},
+            #{message, jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select id, message from message
+        where id = #{id, jdbcType=BIGINT}
+    </select>
+
+</mapper>
