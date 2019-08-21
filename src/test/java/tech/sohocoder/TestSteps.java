@@ -1,20 +1,24 @@
 package tech.sohocoder;
 
 import cucumber.api.java8.En;
+import org.junit.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
-public class HelloSteps extends SpringbootCucumberTest implements En{
+public class TestSteps extends SpringbootCucumberTest implements En {
 
     String name;
     String path;
     ResultActions resultActions;
+    @Autowired
+    protected MockMvc mockMvc;
 
-    public HelloSteps() {
+    public TestSteps() {
         Given("name is {string}", (String string) -> {
             // Write code here that turns the phrase above into concrete actions
             this.name = string;
